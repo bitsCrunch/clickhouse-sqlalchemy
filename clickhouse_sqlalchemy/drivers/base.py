@@ -162,7 +162,7 @@ class ClickHouseDialect(default.DefaultDialect):
         else:
             qualified_name = quote(table_name)
         query = 'EXISTS TABLE {}'.format(qualified_name)
-        for r in self._execute(connection, query):
+        for r in self._execute(connection, text(query)):
             if r.result == 1:
                 return True
         return False
